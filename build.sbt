@@ -8,6 +8,8 @@ scalaVersion := "2.11.1"
 
 scalacOptions ++= Seq("-deprecation", "-unchecked")
 
+licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
+
 publishMavenStyle := false
 
 publishTo := {

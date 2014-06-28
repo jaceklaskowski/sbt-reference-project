@@ -32,4 +32,11 @@ trait Dependencies {
 }
 
 object build extends Build with Dependencies {
+  lazy val noPublishing = Seq(
+    publish := (),
+    publishLocal := (),
+    publishArtifact := false
+  )
+
+
 }

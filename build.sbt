@@ -10,9 +10,9 @@ scalacOptions ++= Seq("-deprecation", "-unchecked")
 
 licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 
-publishMavenStyle := false
-
-publishTo := {
-  if (isSnapshot.value) Some(Classpaths.sbtPluginSnapshots)
-  else Some(Classpaths.sbtPluginReleases)
-}
+resolvers ++= Seq(
+  Resolver.mavenLocal,
+  Resolver.sbtPluginRepo("snapshots"),
+  Resolver.sonatypeRepo("snapshots"),
+  Resolver.typesafeRepo("snapshots")
+)

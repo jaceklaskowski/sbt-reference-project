@@ -1,0 +1,11 @@
+language: scala
+script:
+  - sbt ++$TRAVIS_SCALA_VERSION test scripted
+scala:
+  - 2.10.4
+  - 2.11.1
+jdk:
+  - oraclejdk7
+notifications:
+  email:
+    - jacek@japila.pl

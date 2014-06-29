@@ -1,1 +1,3 @@
 releaseSettings
+
+noPublishing

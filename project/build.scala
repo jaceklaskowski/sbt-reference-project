@@ -37,6 +37,4 @@ object build extends Build with Dependencies {
     publishLocal := (),
     publishArtifact := false
   )
-
-
 }

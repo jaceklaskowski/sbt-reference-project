@@ -2,8 +2,6 @@ organization := "pl.japila.sbt"
 
 name := "sbt-reference-project"
 
-version := "1.0.0-SNAPSHOT"
-
 scalaVersion := "2.11.1"
 
 crossScalaVersions := Seq("2.10.4", "2.11.1")

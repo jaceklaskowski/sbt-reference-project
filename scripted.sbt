@@ -1,1 +1,3 @@
 scriptedSettings
+
+scriptedBufferLog := false

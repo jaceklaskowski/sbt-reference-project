@@ -17,3 +17,12 @@ resolvers ++= Seq(
   Resolver.typesafeRepo("snapshots"),
   Resolver.typesafeIvyRepo("releases")
 )
+
+def subproject(name: String) = {
+  val id = s"japila-$name"
+  Project(id = id, base = file(id))
+}
+
+lazy val a = subproject("core")
+
+lazy val b = subproject("main")

@@ -26,3 +26,6 @@ def subproject(name: String) = {
 lazy val a = subproject("core")
 
 lazy val b = subproject("main")
+
+shellPrompt <<= ShellPrompt.buildShellPrompt
+

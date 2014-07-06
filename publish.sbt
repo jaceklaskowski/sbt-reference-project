@@ -1,6 +1,7 @@
 publishMavenStyle := false
 
 publishTo := {
-  if (isSnapshot.value) Some(Classpaths.sbtPluginSnapshots)
-  else Some(Classpaths.sbtPluginReleases)
+  import Classpaths._
+  val resolver = if (isSnapshot.value) sbtPluginSnapshots else sbtPluginReleases
+  Some(resolver)
 }

@@ -57,9 +57,16 @@ object ShellPrompt {
 }
 
 object build extends Build with Dependencies {
-  lazy val noPublishing = Seq(
+  lazy val noPublish = Seq(
     publish := (),
     publishLocal := (),
     publishArtifact := false
   )
+
+
+  lazy val japilaProject = (name: String) => {
+    val id = s"japila-$name"
+    Project(id = id, base = file(id))
+  }
+
 }

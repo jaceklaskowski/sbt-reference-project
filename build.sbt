@@ -19,6 +19,15 @@ scalacOptions ++= Seq(
   "-Ywarn-dead-code"
 )
 
+scalacOptions := {
+  CrossVersion.partialVersion(scalaVersion.value) match {
+    case Some((2, 10)) =>
+      scalacOptions.value
+    case Some((2, n)) if n >= 11 =>
+      scalacOptions.value :+ "-Ywarn-unused-import"
+  }
+}
+
 licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 
 resolvers ++= Seq(
@@ -26,17 +35,13 @@ resolvers ++= Seq(
   Resolver.sbtPluginRepo("snapshots"),
   Resolver.sonatypeRepo("snapshots"),
   Resolver.typesafeRepo("snapshots"),
+  Resolver.typesafeRepo("releases"),
   Resolver.typesafeIvyRepo("releases")
 )
 
-def subproject(name: String) = {
-  val id = s"japila-$name"
-  Project(id = id, base = file(id))
-}
+lazy val a = japilaProject("core")
 
-lazy val a = subproject("core")
-
-lazy val b = subproject("main")
+lazy val b = japilaProject("main")
 
 shellPrompt <<= ShellPrompt.buildShellPrompt
 

@@ -1,4 +1,9 @@
-scalacOptions ++= Seq("-deprecation", "-unchecked", "-feature")
+scalacOptions ++= Seq(
+  "-deprecation",
+  "-unchecked",
+  "-feature",
+  "-language:postfixOps"
+)
 
 resolvers += Resolver.typesafeIvyRepo("releases")
 

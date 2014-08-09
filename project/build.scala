@@ -22,13 +22,13 @@ trait Dependencies {
   val akkaDataflow = akkaModuleId("dataflow")
   val akkaTestkit  = akkaModuleId("testkit", true)
 
-  def sprayModuleId(name: String, isTest: Boolean = false) = {
+  def spray(name: String, isTest: Boolean = false) = {
     val m = "io.spray" %% s"spray-$name" % "1.3.1"
     if (isTest) m % Test else m
   }
-  val sprayCan     = sprayModuleId("can")
-  val sprayRouting = sprayModuleId("routing")
-  val sprayTestkit = sprayModuleId("testkit", true)
+  val sprayCan     = spray("can")
+  val sprayRouting = spray("routing")
+  val sprayTestkit = spray("testkit", true)
 }
 
 // Idea borrowed from ReactiveMongo
@@ -49,7 +49,9 @@ object ShellPrompt {
   val buildShellPrompt = Def.setting {
     (state: State) =>
       {
-        val currProject = Project.extract(state).currentProject.id
+        val extracted = Project extract state
+        import extracted._
+        val currProject = currentProject.id
         "%s:%s:%s> ".format(
           currProject, currBranch, (version in ThisBuild).value)
       }
